@@ -6,6 +6,7 @@ import { useTypeUser } from "../../hooks/useTypeUsers"
 import { useNavigate } from "react-router-dom"
 import { RoutesMap } from "../../routes/routes"
 import { CustomToast } from "../../components/CustomToast"
+import fondo from "../../assets/fondo.jpg"
 
 interface DataLogin {
     email: string,
@@ -63,7 +64,7 @@ const Login = () => {
     return (
         <HStack w="full" h="100vh">
             <Flex w="full" h="full" borderRightWidth={1} display={{ base: "none", md: "flex" }}>
-                <Image objectFit="cover" w="full" h="full" src="https://www.defensoria.gob.pe/wp-content/uploads/2019/01/colegio_andina.jpg" />
+                <Image objectFit="cover" w="full" h="full" src={fondo} />
             </Flex>
             <Flex w="full" h="full" alignItems={'center'} justifyContent={'center'}>
                 <Stack w="full" maxW="md" spacing={4} p={6}>
@@ -72,12 +73,12 @@ const Login = () => {
                     </Heading>
                     <FormControl>
                         <FormLabel>Correo Electrónico:</FormLabel>
-                        <Input id="email" name="email" placeholder="ejemplo@colegio.com" value={data.email} onChange={handleChange} />
+                        <Input id="email" name="email" placeholder="ejemplo@colegio.com" value={data.email} onChange={handleChange} maxLength={30} />
                     </FormControl>
                     <FormControl>
                         <FormLabel>Contraseña:</FormLabel>
                         <InputGroup>
-                            <Input id="password" name="password" type={showPassword ? 'text' : 'password'} placeholder="Tu contraseña" value={data.password} onChange={handleChange} />
+                            <Input id="password" name="password" type={showPassword ? 'text' : 'password'} placeholder="Tu contraseña" value={data.password} onChange={handleChange} maxLength={12} />
                             <InputRightElement width='4.5rem'>
                                 <Tooltip hasArrow bg='gray.300' color='gray.600' label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}>
                                     <Button onClick={handleShowPassword} style={{ backgroundColor: 'transparent' }}>
