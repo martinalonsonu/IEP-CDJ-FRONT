@@ -15,6 +15,11 @@ export const useAuthStore = create<AuthState>()(persist((set) => ({
     })),
     setProfile: (dataProfile: userType) => set((state) => ({
         user: dataProfile
+    })),
+    logOut: () => set((state) => ({
+        token: '',
+        user: {} as userType,
+        status: AuthStatus.NOT_AUTHENTICATED
     }))
 }), {
     name: 'auth'

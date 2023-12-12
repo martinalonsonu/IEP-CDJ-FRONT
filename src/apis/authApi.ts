@@ -1,8 +1,7 @@
 import api from "./configs/axiosConfig";
-const typeUserId = 5;
 
 export const authApi = {
-    login: async (email: string, password: string) => {
+    login: async (email: string, password: string, typeUserId: number) => {
         const response = await api.post('/auth/login', { email, password, typeUserId })
             .then(response => response.data)
             .catch((error) => {

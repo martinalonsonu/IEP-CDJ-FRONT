@@ -7,6 +7,7 @@ export const useAuth = () => {
     const user = useAuthStore(state => state.user)
     const setProfile = useAuthStore(state => state.setProfile)
     const userStatus = useAuthStore(state => state.status)
+    const logOutFn = useAuthStore(state => state.logOut)
 
     const setProfileData = async (token: string) => {
         try {
@@ -17,14 +18,22 @@ export const useAuth = () => {
         }
     }
 
-    const login = async (email: string, password: string) => {
+    const login = async (email: string, password: string, typeUser: number) => {
         try {
-            const login = await authApi.login(email, password)
+            const login = await authApi.login(email, password, typeUser)
             if (login.token) {
-                await setToken(login.token)
+                setToken(login.token)
                 await setProfileData(login.token)
                 return true
             }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const logOut = () => {
+        try {
+            logOutFn()
         } catch (error) {
             console.error(error);
         }
@@ -36,6 +45,7 @@ export const useAuth = () => {
         token,
         user,
         userStatus,
-        login
+        login,
+        logOut
     }
 }

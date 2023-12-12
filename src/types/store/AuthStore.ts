@@ -5,7 +5,8 @@ export type AuthState = {
     user: userType,
     status: AuthStatus,
     setToken: (token: string) => void,
-    setProfile: (dataProfile: userType) => void
+    setProfile: (dataProfile: userType) => void,
+    logOut: () => void
 }
 
 export interface userType {
@@ -27,6 +28,7 @@ export interface userType {
     native_language: string;
     discapacity: boolean;
     religion: string;
+    role: string;
     dataUser: DataUser;
     iat: number;
     exp: number;
