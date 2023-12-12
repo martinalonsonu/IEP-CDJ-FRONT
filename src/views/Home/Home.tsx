@@ -8,6 +8,7 @@ const Home = () => {
     return (
         <div>
             <Button onClick={toast}>TOASTTTT</Button>
+            <div>QUE FUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</div>
         </div>
     )
 }

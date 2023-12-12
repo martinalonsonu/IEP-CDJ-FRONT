@@ -1,30 +1,19 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { AuthStatus } from "../../types/store/AuthStatus";
+import { AuthState } from "../../types/store/AuthStore";
+import { userType } from "../../types/store/AuthStore";
 
-export enum AuthStatus {
-    LOGGING_IN = 'logging_in',
-    VERIFYING = 'verifying',
-    AUTHENTICATED = 'authenticated',
-    NOT_AUTHENTICATED = 'not-authenticated'
-}
 
-type State = {
-    token: string,
-    user: any,
-    status: AuthStatus,
-    setToken: (token: string) => void,
-    setProfile: (dataProfile: any) => void
-}
-
-export const useAuthStore = create<State>()(persist((set) => ({
+export const useAuthStore = create<AuthState>()(persist((set) => ({
     token: '',
-    user: null,
+    user: {} as userType,
     status: AuthStatus.NOT_AUTHENTICATED,
     setToken: (token: string) => set((state) => ({
         token,
         status: AuthStatus.AUTHENTICATED,
     })),
-    setProfile: (dataProfile: any) => set((state) => ({
+    setProfile: (dataProfile: userType) => set((state) => ({
         user: dataProfile
     }))
 }), {
